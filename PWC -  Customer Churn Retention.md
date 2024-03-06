@@ -1,43 +1,52 @@
-# PWC Power BI Virtual work - Customer Churn Retention
- <div> 
-  <img src="https://user-images.githubusercontent.com/118357991/227764081-750f7560-c9f7-4563-9cb3-74186769cb42.png"width="650" height="450"> 
-</div>
+# PWC Power BI Virtual work - Customer Retention
 
-## Table of Contents :
+![PWC Task 2-Customer Churn Retenstion_page-0001](https://github.com/Anabil12/PWC-Power-BI-Virtual-Work-Experience/assets/118571332/2cb86bf5-c7ce-4df1-aad6-1397fe16e27a)
+
+
+## Table of Contents:
 
 - Problem Statement
 - Data Preparation
 - Data Modelling
 - Data Analysis (DAX)
 - Data Visualization Dashboard
-- Insights
+- Insights & Recommendation
 
 ## Problem Statement :
-In this project Create a dashboard in Power BI for the call center manager that reflects all relevant Key Performance Indicators (KPIs) and metrics in the dataset.
 
-- Overall customer satisfaction
-- Overall calls answered/abandoned
-- Calls by time
-- Average speed of answer
-- Agent’s performance quadrant -> average handle time (talk duration) vs calls answered
+The purpose of this task is to:
+
+- Define KPI's
+- Create a dashboard for the retention manager reflecting the KPI's
+- Write a short email to him (the engagement partner) explaining your findings, and include suggestions as to what needs to be changed
+- Customers who left within the last month
+- Services each customer has signed up for: phone, multiple lines, internet, online security, online backup, device protection, tech support, and streaming TV and movies
+- Customer account information: how long as a customer, contract, payment method, paperless billing, monthly charges, total charges and number of tickets opened in the categories administrative and technical
+- Demographic info about customers – gender, age range, and if they have partners and dependents
 
 ## Datasource :
 
-The dataset used for this task was presented by [Pwc](https://www.pwc.ch/en/careers-with-pwc/students/virtual-case-experience.html) and call centre trends dataset:
+The dataset used for this task was presented by [Pwc](https://www.pwc.ch/en/careers-with-pwc/students/virtual-case-experience.html) and customer churn Retention dataset:
 
-Dataset: [Call Centre Trends](https://github.com/Anabil12/PWC-Power-BI-Virtual-Work-Experience/blob/main/01%20Call-Center-Dataset.xlsx)
+Dataset: [Customer Churn Retention](https://github.com/Anabil12/PWC-Power-BI-Virtual-Work-Experience/blob/main/02%20Churn-Dataset.xlsx)
 
 ## Data Preparation:
 
-Completed the Data transformation in Power Query and the dataset was loaded into Microsoft Power BI Desktop for modeling.
+Completed the Data transformation in Power Query and the dataset loaded into Microsoft Power BI Desktop for modeling.
 
-Call Center Trends dataset is give table named:
+Customer Churn dataset is give table named:
 
-- " Call Center trends dataset" which has `10 columns and 5000 rows` of observation
+- `Customer churn dataset` which has `23 columns and 7043 rows` of observation
 
 Data Cleaning for the dataset was done in the power query editor as follows:
 
-- Removed Unnecessary columns
+- Replaced  the value is `SeniorCitizen` N coverted No and Y converted Yes
+
+In the new table, one additional conditional columns were added using M-formula:
+
+- loyalty = `SWITCH(TRUE(),'01 Churn-Dataset'[tenure]<=12,"< 1 year",'01 Churn-Dataset'[tenure]<=24,"< 2 years",'01 Churn-Dataset'[tenure]<=36,"< 3 years",'01 Churn-Dataset'[tenure]<=48,"< 4 years", '01 Churn-Dataset'[tenure]<=60,"< 5 years",'01 Churn-Dataset'[tenure]<=72,"< 6 years")`
+
+- Removed Unnecessary columns 
 - Removed Unnecessary rows
 - Each of the columns in the table were validated to have the correct data type
 
@@ -45,51 +54,61 @@ Data Cleaning for the dataset was done in the power query editor as follows:
 
 And then dataset was cleaned and transformed, it was ready to the data modeled.
 
-- The `measure table` and `call centre trends` tables as show below:
+- The `customer churn` tables as show below:
 
--![Screenshot (37)](https://user-images.githubusercontent.com/118357991/227766088-7fe8f2b3-b4b3-4cfd-a925-0895874ea956.png)
+![Screenshot (39)](https://user-images.githubusercontent.com/118357991/227792100-51216842-8e72-4e48-b740-aab5d2f97541.png)
 
 ## Data Analysis (DAX):
 
 Measures used in  all visualization are:
 
-- Average of seed of answered = `AVERAGE('call centre trends'[Speed of answer in seconds])`
+- Average MonthlyCharges = `AVERAGE('01 Churn-Dataset'[MonthlyCharges])`
 
-- Average of satisfaction = `AVERAGE('call centre trends'[Satisfaction rating])`
+- Average TotalCharges = `AVERAGE('01 Churn-Dataset'[TotalCharges])`
 
-- Count satisfaction rating = `COUNT('call centre trends'[Satisfaction rating])`
+- churn count = `CALCULATE(COUNT('01 Churn-Dataset'[Churn]), ALLSELECTED('01 Churn-Dataset'[Churn]),'01 Churn-Dataset'[Churn] = "Yes")`
 
-- Overall Customer Satisfaction = `DIVIDE([Possitive satisfaction rating],[Count satisfaction rating],0)`
+- churn rate % = `DIVIDE(CALCULATE(COUNT('01 Churn-Dataset'[Churn]), '01 Churn-Dataset'[Churn] = "yes" ), COUNT('01 Churn-Dataset'[Churn]), 0)`
 
-- Positive satisfaction rating = `CALCULATE(COUNT('call centre trends'[Satisfaction rating]),FILTER('call centre trends','call centre trends'[Satisfaction rating] IN {4,5}))`
+- Dependent in % = `DIVIDE(CALCULATE(COUNT('01 Churn-Dataset'[Dependents]), '01 Churn-Dataset'[Dependents]="Yes",'01 Churn-Dataset'[Churn]="Yes"), CALCULATE(COUNT('01 Churn-Dataset'[Dependents]),'01 Churn-Dataset'[Churn]="Yes"), 0)`
 
-- resolved calls = `COUNTX(FILTER('call centre trends','call centre trends'[Resolved] = "Yes"), 'call centre trends'[Resolved])`
+- Device protection in % = `DIVIDE(CALCULATE(COUNT('01 Churn-Dataset'[DeviceProtection]), '01 Churn-Dataset'[DeviceProtection] ="Yes", '01 Churn-Dataset'[Churn]="Yes"),CALCULATE(COUNT('01 Churn-Dataset'[DeviceProtection]),'01 Churn-Dataset'[Churn]="Yes"),0)`
 
-- Unresolved calls = `COUNTX(FILTER('call centre trends','call centre trends'[Resolved] = "No"), 'call centre trends'[Resolved])`
+- Online backup in % = `DIVIDE(CALCULATE(COUNT('01 Churn-Dataset'[OnlineBackup]), '01 Churn-Dataset'[OnlineBackup] ="Yes", '01 Churn-Dataset'[Churn]="Yes"),CALCULATE(COUNT('01 Churn-Dataset'[OnlineBackup]),'01 Churn-Dataset'[Churn]="Yes"),0)`
 
-- total calls =  `CALCULATE('Table'[total calls answered] + 'Table'[total calls unanswred])`
+- Online security in % =`DIVIDE(CALCULATE(COUNT('01 Churn-Dataset'[OnlineSecurity]), '01 Churn-Dataset'[OnlineSecurity] ="Yes", '01 Churn-Dataset'[Churn]="Yes"),CALCULATE(COUNT('01 Churn-Dataset'[OnlineSecurity]),'01 Churn-Dataset'[Churn]="Yes"),0)`
 
-- total calls answered = `COUNTX(FILTER('call centre trends','call centre trends'[Answered (Y/N)] = "Yes"),'call centre trends'[Answered (Y/N)])`
+- Partner in % = `DIVIDE(CALCULATE(COUNT('01 Churn-Dataset'[Partner]),'01 Churn-Dataset'[Partner]="Yes",'01 Churn-Dataset'[Churn]="Yes"), CALCULATE(COUNT('01 Churn-Dataset'[Partner]), '01 Churn-Dataset'[Churn]="Yes"), 0)`
 
-- total calls unanswered =`COUNTX(FILTER('call centre trends','call centre trends'[Answered (Y/N)] = "No"), 'call centre trends'[Answered (Y/N)])`
+- Phone service in % =`DIVIDE(CALCULATE(COUNT('01 Churn-Dataset'[PhoneService]), '01 Churn-Dataset'[PhoneService] ="Yes", '01 Churn-Dataset'[Churn]="Yes"),CALCULATE(COUNT('01 Churn-Dataset'[PhoneService]),'01 Churn-Dataset'[Churn]="Yes"),0)`
 
-## Data Visualization (Dashboard) :
+- SenioCitizen in % = `DIVIDE(CALCULATE(COUNT('01 Churn-Dataset'[SeniorCitizen]),'01 Churn-Dataset'[SeniorCitizen]=1,'01 Churn-Dataset'[Churn]="Yes"), CALCULATE(COUNT('01 Churn-Dataset'[SeniorCitizen]),'01 Churn-Dataset'[Churn]="Yes"), 0)`
+
+- Streaming Movies in % =`DIVIDE(CALCULATE(COUNT('01 Churn-Dataset'[StreamingMovies]), '01 Churn-Dataset'[StreamingMovies] ="Yes", '01 Churn-Dataset'[Churn]="Yes"),CALCULATE(COUNT('01 Churn-Dataset'[StreamingMovies]),'01 Churn-Dataset'[Churn]="Yes"),0)`
+
+- Streaming TV in % =`DIVIDE(CALCULATE(COUNT('01 Churn-Dataset'[StreamingTV]), '01 Churn-Dataset'[StreamingTV] ="Yes", '01 Churn-Dataset'[Churn]="Yes"),CALCULATE(COUNT('01 Churn-Dataset'[StreamingTV]),'01 Churn-Dataset'[Churn]="Yes"),0)`
+
+- Tech Support in % =`DIVIDE(CALCULATE(COUNT('01 Churn-Dataset'[TechSupport]), '01 Churn-Dataset'[TechSupport] ="Yes", '01 Churn-Dataset'[Churn]="Yes"),CALCULATE(COUNT('01 Churn-Dataset'[TechSupport]),'01 Churn-Dataset'[Churn]="Yes"),0)`
+
+## Data Visualization (Dashboard):
 
 Data visualization for the data analysis (DAX) was done in Microsoft Power BI Desktop:
 
-Dashboard: [View Dashboard](https://www.novypro.com/project/yogeshkasar97)
+Dashboard: [View Dashboard]()
 
-Shows visualizations from Call Center Trends :
+Shows visualizations from Customer Retention analysis:
 
-| Call Center Trends (Overview) |
+| Customer Churn |
 | ----------- |
-| ![overview](https://github.com/Anabil12/PWC-Power-BI-Virtual-Work-Experience/assets/118571332/5025926e-14ef-4b90-afb1-b461d8aa4f83) |
+|![PWC Task 2-Customer Churn Retenstion_page-0002](https://github.com/Anabil12/PWC-Power-BI-Virtual-Work-Experience/assets/118571332/b3effa2d-c433-46cf-bcbf-f0f95ece7b2e)|
 
-
-| Call Center Trends (Agent's Performance) |
+| Customer Risk |
 | ----------- |
-| ![performance](https://github.com/Anabil12/PWC-Power-BI-Virtual-Work-Experience/assets/118571332/24cdc504-2be6-44ce-8516-3b9d75ef17ee) |
+|![PWC Task 2-Customer Churn Retenstion_page-0003](https://github.com/Anabil12/PWC-Power-BI-Virtual-Work-Experience/assets/118571332/66591693-02f9-4684-93fd-5de86101a550)|
 
-| Call Center Trends (Insights) |
+| Insights & Recommendation |
 | ----------- |
-| ![insights](https://github.com/Anabil12/PWC-Power-BI-Virtual-Work-Experience/assets/118571332/293b8b32-95a1-46f5-9d0e-3b0f7274f9b4) |
+|![PWC Task 2-Customer Churn Retenstion_page-0004](https://github.com/Anabil12/PWC-Power-BI-Virtual-Work-Experience/assets/118571332/baaba82a-5e26-4936-bb5b-904fbd43c60f)|
+
+
+
