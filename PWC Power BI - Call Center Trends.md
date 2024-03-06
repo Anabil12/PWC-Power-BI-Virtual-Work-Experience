@@ -1,8 +1,7 @@
 # PWC Power BI Virtual work - Call Center Trends
- <div> 
-  <img src="https://user-images.githubusercontent.com/118357991/227764081-750f7560-c9f7-4563-9cb3-74186769cb42.png"width="650" height="450"> 
-</div>
 
+![main](https://github.com/Anabil12/PWC-Power-BI-Virtual-Work-Experience/assets/118571332/51a9bbc1-1185-487d-b418-4f932c2ef0d5)
+ 
 ## Table of Contents :
 
 - Problem Statement
