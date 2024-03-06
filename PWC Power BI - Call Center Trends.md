@@ -1,5 +1,7 @@
 # PWC Power BI Virtual work - Call Center Trends
-![PwC Power BI Virtual Case Experience (1)](https://user-images.githubusercontent.com/118357991/227764081-750f7560-c9f7-4563-9cb3-74186769cb42.png)
+ <div> 
+  <img src="https://user-images.githubusercontent.com/118357991/227764081-750f7560-c9f7-4563-9cb3-74186769cb42.png"width="650" height="450"> 
+</div>
 
 ## Table of Contents :
 
@@ -13,8 +15,6 @@
 ## Problem Statement :
 In this project Create a dashboard in Power BI for the call center manager that reflects all relevant Key Performance Indicators (KPIs) and metrics in the dataset.
 
-Possible KPIs include (but not limited to):
-
 - Overall customer satisfaction
 - Overall calls answered/abandoned
 - Calls by time
@@ -23,17 +23,17 @@ Possible KPIs include (but not limited to):
 
 ## Datasource :
 
-Dataset used for this task was presented by [Pwc](https://www.pwc.ch/en/careers-with-pwc/students/virtual-case-experience.html) and call centre trends dataset:
+The dataset used for this task was presented by [Pwc](https://www.pwc.ch/en/careers-with-pwc/students/virtual-case-experience.html) and call centre trends dataset:
 
-Dataset: [Call Centre Trends](https://github.com/yogeshkasar778/PWC_task-Call_Centre_trends-dashboard/blob/main/01%20Call-Center-Dataset.xlsx)
+Dataset: [Call Centre Trends](https://github.com/Anabil12/PWC-Power-BI-Virtual-Work-Experience/blob/main/01%20Call-Center-Dataset.xlsx)
 
 ## Data Preparation:
 
-Completed the Data transformation in Power Query and the dataset loaded into Microsoft Power BI Desktop for modeling.
+Completed the Data transformation in Power Query and the dataset was loaded into Microsoft Power BI Desktop for modeling.
 
-Call Centre Trends dataset is give table named:
+Call Center Trends dataset is give table named:
 
-- `Call Center trends dataset` which has `10 columns and 5000 rows` of observation
+- " Call Center trends dataset" which has `10 columns and 5000 rows` of observation
 
 Data Cleaning for the dataset was done in the power query editor as follows:
 
@@ -53,15 +53,15 @@ And then dataset was cleaned and transformed, it was ready to the data modeled.
 
 Measures used in  all visualization are:
 
-- Average of seed of answerd = `AVERAGE('call centre trends'[Speed of answer in seconds])`
+- Average of seed of answered = `AVERAGE('call centre trends'[Speed of answer in seconds])`
 
-- Average of statisfaction = `AVERAGE('call centre trends'[Satisfaction rating])`
+- Average of satisfaction = `AVERAGE('call centre trends'[Satisfaction rating])`
 
-- Count satisfation rating = `COUNT('call centre trends'[Satisfaction rating])`
+- Count satisfaction rating = `COUNT('call centre trends'[Satisfaction rating])`
 
-- Overall Customer Satisfation = `DIVIDE([Possitive satisfation rating],[Count satisfation rating],0)`
+- Overall Customer Satisfaction = `DIVIDE([Possitive satisfaction rating],[Count satisfaction rating],0)`
 
-- Possitive satisfation rating = `CALCULATE(COUNT('call centre trends'[Satisfaction rating]),FILTER('call centre trends','call centre trends'[Satisfaction rating] IN {4,5}))`
+- Positive satisfaction rating = `CALCULATE(COUNT('call centre trends'[Satisfaction rating]),FILTER('call centre trends','call centre trends'[Satisfaction rating] IN {4,5}))`
 
 - resolved calls = `COUNTX(FILTER('call centre trends','call centre trends'[Resolved] = "Yes"), 'call centre trends'[Resolved])`
 
@@ -71,7 +71,7 @@ Measures used in  all visualization are:
 
 - total calls answered = `COUNTX(FILTER('call centre trends','call centre trends'[Answered (Y/N)] = "Yes"),'call centre trends'[Answered (Y/N)])`
 
-- total calls unanswred =`COUNTX(FILTER('call centre trends','call centre trends'[Answered (Y/N)] = "No"), 'call centre trends'[Answered (Y/N)])`
+- total calls unanswered =`COUNTX(FILTER('call centre trends','call centre trends'[Answered (Y/N)] = "No"), 'call centre trends'[Answered (Y/N)])`
 
 ## Data Visualization (Dashboard) :
 
@@ -81,27 +81,19 @@ Dashboard: [View Dashboard](https://www.novypro.com/project/yogeshkasar97)
 
 Shows visualizations from Call Center Trends :
 
-| Call Centre Trends (Overview) |
+| Call Center Trends (Overview) |
 | ----------- |
-| ![PWC Task 1 - Call Centre Dashboard-1](https://user-images.githubusercontent.com/118357991/227767359-463d93ee-5436-4f6a-ab7d-705c11d0dfbf.png) |
+| ![overview](https://github.com/Anabil12/PWC-Power-BI-Virtual-Work-Experience/assets/118571332/5025926e-14ef-4b90-afb1-b461d8aa4f83) |
 
 
-| Call Centre Trends (Agent's Performance) |
+| Call Center Trends (Agent's Performance) |
 | ----------- |
-| ![PWC Task 1 - Call Centre Dashboard-2](https://user-images.githubusercontent.com/118357991/227767508-8667b273-6a78-40fa-bc20-78fc88c155cc.png) |
+| ![performance](https://github.com/Anabil12/PWC-Power-BI-Virtual-Work-Experience/assets/118571332/24cdc504-2be6-44ce-8516-3b9d75ef17ee) |
 
-## Insights :
+| Call Center Trends (Insights) |
+| ----------- |
+| ![insights](https://github.com/Anabil12/PWC-Power-BI-Virtual-Work-Experience/assets/118571332/293b8b32-95a1-46f5-9d0e-3b0f7274f9b4) |
 
-As shown by Data Visualization, It can be deduced that:
 
-- Most of the satisfaction ratings from each call are 3 and 4.
-- The average satisfaction rating has decreased over the span of three months. January brought the highest satisfaction rating and march the lowest.
-- The percentage of issue resolved in January was the highest, with a dip in February. It increased again in march.
-- The majority of calls come in the morning.
-- The average speed of answer by Joe is the highest.
-- The call resolution rate of Jim is the highest, even though the average speed of his answers is lower compared to those of Joe, Martha and Dan. The call answered by - him are also higher than the average number of calls answered.
-- Becky's speed of answer is the lowest among all, and her rate of calls resolved is higher. She is in the 5th position in the call resolution rate. 
-- Martha has the highest  speed of answered in the sec
 
----
 
