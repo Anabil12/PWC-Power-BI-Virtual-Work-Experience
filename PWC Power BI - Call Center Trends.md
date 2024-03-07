@@ -1,6 +1,6 @@
 # PWC Power BI Virtual work - Call Center Trends
 
-![main](https://github.com/Anabil12/PWC-Power-BI-Virtual-Work-Experience/assets/118571332/51a9bbc1-1185-487d-b418-4f932c2ef0d5)
+![PWC Task 1 - Call Centre Dashboard_page-0001](https://github.com/Anabil12/Anabil12/assets/118571332/a78f3371-0bb4-45a7-841d-2806ca2322a8)
  
 ## Table of Contents :
 
@@ -74,24 +74,16 @@ Measures used in  all visualization are:
 
 ## Data Visualization (Dashboard) :
 
-Data visualization for the data analysis (DAX) was done in Microsoft Power BI Desktop:
-
-Dashboard: [View Dashboard]()
-
 Shows visualizations from Call Center Trends :
-
-| Call Center Trends (Overview) |
-| ----------- |
-| ![overview](https://github.com/Anabil12/PWC-Power-BI-Virtual-Work-Experience/assets/118571332/5025926e-14ef-4b90-afb1-b461d8aa4f83) |
 
 
 | Call Center Trends (Agent's Performance) |
 | ----------- |
-| ![performance](https://github.com/Anabil12/PWC-Power-BI-Virtual-Work-Experience/assets/118571332/24cdc504-2be6-44ce-8516-3b9d75ef17ee) |
+| ![PWC Task 1 - Call Centre Dashboard_page-0002](https://github.com/Anabil12/Anabil12/assets/118571332/39e790ed-e2e0-4aae-9986-b30c62894303) |
 
 | Call Center Trends (Insights) |
 | ----------- |
-| ![insights](https://github.com/Anabil12/PWC-Power-BI-Virtual-Work-Experience/assets/118571332/293b8b32-95a1-46f5-9d0e-3b0f7274f9b4) |
+| ![PWC Task 1 - Call Centre Dashboard_page-0003](https://github.com/Anabil12/Anabil12/assets/118571332/1a05ac05-c84e-47fc-8563-fe85c48604da) |
 
 
 
